@@ -10,7 +10,7 @@ productRoutes.get("/", async (req, res) => {
 });
 
 //GET MENU BY ID
-productRoutes.get("/:id", async (req, res) => {
+productRoutes.get("/id/:id", async (req, res) => {
   const menu = await prisma.menu.findUnique({
     where: {
       idMenu: parseInt(req.params.idMenu),
@@ -24,7 +24,7 @@ productRoutes.get("/:id", async (req, res) => {
 });
 
 //GET MENU BY KATEGORI
-productRoutes.get("/:kategori", async (req, res) => {
+productRoutes.get("/category/:kategori", async (req, res) => {
   const categoryMenu = await prisma.menu.findCategory();
   res.status(200).send(menu);
 });

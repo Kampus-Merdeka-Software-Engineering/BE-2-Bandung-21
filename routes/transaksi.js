@@ -32,3 +32,5 @@ transaksiRoutes.post("/", async (req, res) => {
     data: newTransaksi,
   });
 });
+
+module.exports = { transaksiRoutes };
