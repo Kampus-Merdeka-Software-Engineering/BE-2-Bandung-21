@@ -1,0 +1,36 @@
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const { productRoutes } = require("./routes/product");
+const { transaksiRoutes } = require("./routes/transaksi");
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// const bodyParser = require("body-parser");
+// const db = require("./connection.js");
+// const response = require("./response.js");
+// const crypto = require("crypto");
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.get("/", async (req, res) => {
+  res.send("here is the response");
+});
+
+// PRODUCT ROUTES
+app.use("/Product", productRoutes);
+
+// TRANSAKSI ROUTES
+app.use("/Transaksi", transaksiRoutes);
+
+app.all("*", async (req, res) => {
+  res.json({
+    message: "Routes you're looking is not found",
+  });
+});
+
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server is already running at ${PORT}`);
+});

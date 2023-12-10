@@ -15,15 +15,15 @@ model Product {
   product_name            String
   price                   Int
   discounted_price        String
-  imageURL                String          @db.Text
-  category_id             Int?    
+  image                   String          @db.Text
+  category_id             Int    
   category_name           String
 }
 
 model Category {
- category_id     Int     @id @default(autoincrement())
+ category_id     Int             @id @default(autoincrement())
  category_name   String
- imageURL        String
+ image           String
 }
 
 model Transaction {
@@ -44,9 +44,9 @@ model Transaction {
 
 model ContactUs {
   id          Int      @id @default(autoincrement())
-  name        String
+  nama        String
   email       String
-  phoneNumber String?
-  message     String   @db.Text
+  telepon     String?
+  pesan       String   @db.Text
   
 }
