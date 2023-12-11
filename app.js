@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 // const response = require("./response.js");
 // const crypto = require("crypto");
 
-app.use(cors({origin: 'http://127.0.0.1:5500'}));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
