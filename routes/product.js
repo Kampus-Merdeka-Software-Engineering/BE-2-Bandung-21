@@ -3,17 +3,18 @@ const productRoutes = express.Router();
 const { prisma } = require("../config/prisma.js");
 
 // MENU
-// GET ALL MENU
+// GET ALL Produk
 productRoutes.get("/", async (req, res) => {
-  const menu = await prisma.menu.findMany();
-  res.status(200).send(menu);
+  const Product = await prisma.Product.findMany();
+  res.status(200).send(Product);
 });
 
-//GET MENU BY ID
+//GET Produk BY ID
 productRoutes.get("/id/:id", async (req, res) => {
-  const menu = await prisma.menu.findUnique({
+  console.log(req.params);
+  const menu = await prisma.Product.findUnique({
     where: {
-      idMenu: parseInt(req.params.idMenu),
+      id: parseInt(req.params.id),
     },
   });
   if (!menu)
@@ -25,8 +26,8 @@ productRoutes.get("/id/:id", async (req, res) => {
 
 //GET MENU BY KATEGORI
 productRoutes.get("/category/:kategori", async (req, res) => {
-  const categoryMenu = await prisma.menu.findCategory();
-  res.status(200).send(menu);
+  const categoryMenu = await prisma.Product.findCategory();
+  res.status(200).send(categoryMenu);
 });
 
 //CREATE MENU
