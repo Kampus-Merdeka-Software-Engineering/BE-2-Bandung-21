@@ -28,9 +28,6 @@ model Category {
 
 model Transaction {
   id                Int         @id @default(autoincrement())
-  transaction_name  String
-  product_id        Int
-  id_user           Int
   username          String
   email             String
   phone             String

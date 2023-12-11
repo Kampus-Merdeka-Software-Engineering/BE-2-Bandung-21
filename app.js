@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const { productRoutes } = require("./routes/product");
 const { transaksiRoutes } = require("./routes/transaksi");
+const { kontakRoutes } = require("./routes/kontakkami");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -24,6 +25,9 @@ app.use("/Product", productRoutes);
 
 // TRANSAKSI ROUTES
 app.use("/Transaksi", transaksiRoutes);
+
+// Kontak ROUTES
+app.use("/Kontak", kontakRoutes);
 
 app.all("*", async (req, res) => {
   res.json({

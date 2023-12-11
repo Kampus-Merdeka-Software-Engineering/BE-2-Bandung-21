@@ -19,17 +19,24 @@ transaksiRoutes.get("/:idTransaksi", async (req, res) => {
 
 // CREATE TRANSAKSI
 transaksiRoutes.post("/", async (req, res) => {
-  const { name } = req.body;
+  const { username, email, phone, alamat, negara, kota, total_barang, total_harga } = req.body;
   // todo - handle if name is not passed in
   // if (!name) res.status(400).json({message: "Name is required"});
-  const newCatalog = await prisma.transaksi.create({
+  const newCatalog = await prisma.transaction.create({
     data: {
-      name: name,
+      username: username,
+      email   : email,
+      phone   : phone,
+      alamat  : alamat,
+      negara  : negara,
+      kota    : kota,
+      total_barang  : total_barang,
+      total_harga   : total_harga,
     },
   });
   res.status(201).json({
     message: "Transaksi created",
-    data: newTransaksi,
+    data: newCatalog,
   });
 });
 
